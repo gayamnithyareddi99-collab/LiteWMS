@@ -379,21 +379,73 @@ footer{
   .hero p{font-size:16px;}
 }
 
+/* 3 DOT MENU */
+.menu-toggle{
+  display:none;
+  font-size:28px;
+  cursor:pointer;
+  color:#38bdf8;
+}
+
+/* MOBILE MENU */
+@media(max-width:900px){
+  .menu-toggle{
+    display:block;
+  }
+
+  .nav-links{
+    position:absolute;
+    top:70px;
+    right:20px;
+    background:#020617;
+    border:1px solid rgba(56,189,248,0.3);
+    border-radius:14px;
+    padding:14px 18px;
+    display:none;
+    flex-direction:column;
+    gap:14px;
+    box-shadow:0 20px 60px rgba(0,0,0,0.6);
+  }
+
+  .nav-links a{
+    margin:0;
+  }
+
+  .nav-links.show{
+    display:flex;
+  }
+}
 
 </style>
 </head>
+<script>
+function toggleMenu(){
+  document.getElementById("navLinks").classList.toggle("show");
+}
+
+function closeMenu(){
+  document.getElementById("navLinks").classList.remove("show");
+}
+</script>
 
 <body>
 
 <nav>
   <div class="logo">LiteWMS</div>
-  <div class="nav-links">
-    <a href="#features">Features</a>
-    <a href="#how">How It Works</a>
-    <a href="#pricing">Pricing</a>
-    <a href="#contact">Contact</a>
+
+  <!-- 3 DOT / HAMBURGER -->
+  <div class="menu-toggle" onclick="toggleMenu()">
+    &#8942;
+  </div>
+
+  <div class="nav-links" id="navLinks">
+    <a href="#features" onclick="closeMenu()">Features</a>
+    <a href="#how-it-works" onclick="closeMenu()">How It Works</a>
+    <a href="#pricing" onclick="closeMenu()">Pricing</a>
+    <a href="#contact" onclick="closeMenu()">Contact</a>
   </div>
 </nav>
+
 
 <section class="hero">
   <div class="hero-glow"></div>
@@ -403,11 +455,12 @@ footer{
   </h1>
 
   <p>
-    LiteWMS helps SMEs manage inventory like enterprise warehouses.
-    <strong>Mobile-first</strong>, real-time, and built for
-    <span class="highlight">accuracy</span>,
-    <span class="highlight">speed</span>, and
-    <span class="highlight">growth</span>.
+      LiteWMS helps SMEs manage inventory like enterprise warehouses
+  without the cost or complexity.
+  Our AI-powered, mobile-first platform delivers real-time visibility,
+  accurate stock control, faster order fulfillment, and smarter
+  warehouse operations from day one.
+    
   </p>
 
   <div class="hero-buttons">
@@ -425,21 +478,22 @@ footer{
     <div class="about-text">
       <h2>About LiteWMS</h2>
       <p class="about-highlight">
-        Built for SMEs. Powered by AI. Designed for growth.
-      </p>
+    <p class="about-highlight">
+  Built for SMEs. Powered by AI. Designed for growth.
+</p>
 
-      <p>
-        LiteWMS is a mobile-first, AI-powered Warehouse Management System
-        created to help small and medium-sized businesses run warehouses
-        with enterprise-level accuracy and speed.
-      </p>
+<p>
+  LiteWMS is a mobile-first, AI-powered Warehouse Management System built
+  specifically for small and medium-sized businesses to manage inventory
+  with enterprise-level accuracy, speed, and control.
+</p>
 
-      <p>
-        Unlike traditional systems that are expensive and complex,
-        LiteWMS focuses on simplicity, real-time visibility, and smart
-        automation — helping teams reduce errors, save time, and scale
-        confidently.
-      </p>
+<p>
+  Unlike traditional systems that are expensive, complex, and slow to
+  implement, LiteWMS focuses on simplicity, real-time visibility, and
+  smart automation helping teams reduce errors, save operational time,
+  and scale their warehouse operations with confidence.
+</p>
 
       <div class="about-points">
         <span>✔ SME Focused</span>
@@ -449,20 +503,22 @@ footer{
       </div>
     </div>
 
-    <div class="about-card">
-      <h3>Why LiteWMS?</h3>
-      <p>
-        We combine real warehouse experience with modern technology to
-        deliver a simple yet powerful WMS that works from day one.
-      </p>
+   <div class="about-card">
+  <h3>Why LiteWMS?</h3>
+  <p>
+    LiteWMS is built by people who understand real warehouse challenges.
+    We combine hands-on operational experience with modern AI technology
+    to deliver a simple, powerful WMS that works from day one.
+  </p>
 
-      <ul>
-        <li>AI-driven stock forecasting</li>
-        <li>Fast setup with no hardware</li>
-        <li>Accurate picking & dispatch</li>
-        <li>Designed for UK SMEs</li>
-      </ul>
-    </div>
+  <ul>
+    <li>AI-driven stock forecasting to prevent overstock and shortages</li>
+    <li>Quick setup with no expensive hardware or complex onboarding</li>
+    <li>High-accuracy picking, packing, and dispatch workflows</li>
+    <li>Purpose-built for UK small and medium-sized businesses</li>
+  </ul>
+</div>
+
 
   </div>
 </section>
@@ -724,7 +780,7 @@ aboutObserver.observe(aboutSection);
   <div class="features-inner">
     <h2>Core LiteWMS Features</h2>
     <p class="section-text">
-      Everything needed to run a modern, AI-powered warehouse.
+      
     </p>
 
   <div class="features-grid">
@@ -1023,7 +1079,7 @@ howCards.forEach(card=>{
         <li>✔ Advanced analytics</li>
         <li>✔ Dedicated manager</li>
       </ul>
-      <a href="mailto:sales@litewmshub.co.uk" class="price-btn outline">
+      <a href="mailto:gsbawa1995@gmail.com" class="price-btn outline">
         Contact Sales
       </a>
     </div>
@@ -1075,7 +1131,6 @@ howCards.forEach(card=>{
   margin:auto;
 }
 
-/* CARD */
 .price-card{
   background:rgba(255,255,255,0.08);
   backdrop-filter:blur(16px);
@@ -1084,7 +1139,9 @@ howCards.forEach(card=>{
   box-shadow:0 30px 80px rgba(0,0,0,0.5);
   transition:0.4s ease;
   position:relative;
+  min-height:520px;
 }
+
 
 /* WHITE HOVER */
 .price-card:hover{
@@ -1187,28 +1244,35 @@ howCards.forEach(card=>{
   .pricing-section h2{font-size:32px;}
   .price-card.popular{transform:none;}
 }
+.price-card.preload{
+  opacity:1;
+  transform:translateY(20px);
+}
+
+.price-card.show{
+  transform:translateY(0);
+  transition:0.6s ease;
+}
+
 </style>
 
 <script>
-/* SCROLL ANIMATION */
 const priceCards = document.querySelectorAll('.price-card');
 
 const priceObserver = new IntersectionObserver(entries=>{
   entries.forEach(entry=>{
     if(entry.isIntersecting){
-      entry.target.style.opacity = 1;
-      entry.target.style.transform = 'translateY(0)';
+      entry.target.classList.add('show');
     }
   });
-},{threshold:0.2});
+},{threshold:0.1});
 
 priceCards.forEach(card=>{
-  card.style.opacity = 0;
-  card.style.transform = 'translateY(60px)';
-  card.style.transition = '0.9s ease';
+  card.classList.add('preload');
   priceObserver.observe(card);
 });
 </script>
+
 
 
 <!-- CONTACT / CTA – NEW MODEL -->
@@ -1220,8 +1284,7 @@ priceCards.forEach(card=>{
     <div class="contact2-left">
       <h2>Let’s Talk About Your Warehouse</h2>
       <p>
-        Whether you want a demo, pricing details, or general information,
-        the LiteWMS team is ready to help you get started.
+        Whether you’re looking for a live demo, detailed pricing information, or general guidance, the LiteWMS team is ready to support you at every step. We’ll help you understand how LiteWMS fits your warehouse needs and get you started quickly and smoothly.
       </p>
 
       <ul class="contact2-points">
@@ -1236,12 +1299,12 @@ priceCards.forEach(card=>{
     <div class="contact2-right">
       <h3>Contact LiteWMS</h3>
 
-      <a href="mailto:info@litewmshub.co.uk" class="contact2-btn primary">
+      <a href="mailto:ramankaur1615@gmail.com" class="contact2-btn primary">
         📧 General Enquiry
         <span>Questions & support</span>
       </a>
 
-      <a href="mailto:sales@litewmshub.co.uk" class="contact2-btn outline">
+      <a href="gsbawa1995@gmail.com" class="contact2-btn outline">
         💼 Sales & Demo
         <span>Pricing & live demo</span>
       </a>
